@@ -1,3 +1,5 @@
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Scanner;
 public class Menu {
     public void menu() {
@@ -46,8 +48,8 @@ public class Menu {
     public void warrior_creation() {
         Scanner keyboard = new Scanner(System.in);
         String name;
-        int health;
-        int force;
+        int health = 0;
+        int force = 0;
         String weapon;
         String shield;
 
@@ -55,17 +57,19 @@ public class Menu {
 
         System.out.println("Entrez le nom du Guerrier");
         name = keyboard.nextLine();
+        submenu_character_creation(name, health, force);
         do {
             System.out.println("Entrez la vie du Guerrier (entre 5 et 10)");
             health = keyboard.nextInt();
         } while (health < 5 || health > 10);
+        submenu_character_creation(name, health, force);
         do {
             System.out.println("Entrez la force du Guerrier (entre 5 et 10)");
             force = keyboard.nextInt();
             keyboard.nextLine(); // Doublement car il considère entrée comme un chaine vide du coup weapon serait " "
         } while (force < 5 || force > 10);
+        submenu_character_creation(name, health, force);
         System.out.println("Entrez le nom de l'arme du Guerrier");
-
         weapon = keyboard.nextLine();
         System.out.println("Entrer le nom du bouclier du Guerrier");
         shield = keyboard.nextLine();
@@ -109,15 +113,21 @@ public class Menu {
                 + new_wizard.health + "\n Force : " + new_wizard.force + "\n Sort : " + new_wizard.spell + "\n Potion : " + new_wizard.potion);
 
     }
-    public void submenu (){
+    public void submenu_character_creation (String name, int health, int force ){
+        //OptionalInt<integer> optional_health = Optionallnt.empty(health);
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Que voulez-vous faire ? \n Afficher les infos du personnage : 1 \n" +
                 "Modifier les infos du personnage : 2 \n Poursuivre la création : 3");
         switch (keyboard.nextInt()){
             case 1:
-                System.out.println();
-
+                System.out.println("Voici les caractéristiques du personnages \n" + "Nom " + name +"\n" + "Santé" + health + "\n" + "Force" + force);
+                break;
+            case 2:
+                System.out.println("Modification du personnage");
+                break;
+            case 3:
+                System.out.println("Reprise de la création du personnage");
         }
-
     }
+
 }
