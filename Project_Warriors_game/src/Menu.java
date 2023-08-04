@@ -1,5 +1,3 @@
-import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.Scanner;
 public class Menu {
     public void menu() {
@@ -47,7 +45,7 @@ public class Menu {
         keyboard.close();
     }
 
-    public void warrior_creation() {
+    public Warriors warrior_creation() {
         Scanner keyboard = new Scanner(System.in);
         String name;
         int health = 0;
@@ -80,7 +78,7 @@ public class Menu {
 
         System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_warrior.name + "\n Santé "
                 + new_warrior.health + "\n Force : " + new_warrior.force + "\n Arme : " + new_warrior.weapon + "\n Bouclier : " + new_warrior.shield);
-
+        return new_warrior;
     }
 
     public void wizards_creation() {
@@ -115,43 +113,31 @@ public class Menu {
                 + new_wizard.health + "\n Force : " + new_wizard.force + "\n Sort : " + new_wizard.spell + "\n Potion : " + new_wizard.potion);
 
     }
-    public void submenu_character_creation (String name, int health, int force ){
+    public void submenu_character_creation (String name, int health, int force ) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Que voulez-vous faire ? \n Afficher les infos du personnage : 1 \n" +
                 "Modifier les infos du personnage : 2 \n Poursuivre la création : 3");
 
         switch (keyboard.nextInt()) {
-                case 1:
-                    System.out.println("Voici les caractéristiques du personnages \n" + "Nom " + name + "\n" + "Santé" + health + "\n" + "Force" + force);
-                    submenu_character_creation(name, health, force);
-                    break;
-                case 2:
-                    System.out.println("Modification du personnage \n Modifier le nom : 1 \n Modifier la santé : 2 \n Modifier la force : 3");
-                    switch (keyboard.nextInt()) {
-                        case 1:
-                            System.out.println("Entrez le nouveau nom");
-                            keyboard.nextLine();
-                            name = keyboard.nextLine();
-                            break;
-                        case 2:
-                            do {
-                                System.out.println("Entrez la nouvelle vie du Guerrier (entre 5 et 10)");
-                                health = keyboard.nextInt();
-                            } while (health < 5 || health > 10);
-                            break;
-                        case 3:
-                            do {
-                                System.out.println("Entrez la nouvelle force du Guerrier (entre 5 et 10)");
-                                force = keyboard.nextInt();
-                                keyboard.nextLine(); // Doublement car il considère entrée comme un chaine vide du coup weapon serait " "
-                            } while (force < 5 || force > 10);
-                            break;
-                    }
+            case 1:
+                System.out.println("Voici les caractéristiques du personnages \n" + "Nom " + name + "\n" + "Santé" + health + "\n" + "Force" + force);
+                submenu_character_creation(name, health, force);
+                break;
+            case 2:
+                update_character(name, health, force);
 
-                case 3:
-                    System.out.println("Reprise de la création du personnage");
-                    break;
+            case 3:
+                System.out.println("Reprise de la création du personnage");
+                break;
             }
         }
+    public void update_character (String name, int health, int force) {
+        Scanner keyboard = new Scanner(System.in);
+        //System.out.println("Modification du personnage \n Modifier le nom : 1 \n Modifier la santé : 2 \n Modifier la force : 3");
+        
+        Warriors update_warrior = new Warriors();
+        update_warrior.update_warrior();
+
     }
+}
 

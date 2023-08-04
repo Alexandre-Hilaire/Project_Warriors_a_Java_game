@@ -12,9 +12,18 @@ public class Warriors {
         this.weapon = weapon;
         this.shield = shield;
     }
+    Warriors () {
+
+    }
 
     public String toString(){
         return name+ " " + health + " "+ force + " " + weapon + " " + shield;
+    }
+
+    public void update_warrior () {
+        this.name = name;
+        this.health = health;
+        this.force = force;
     }
     public String getName() {
         return name;
