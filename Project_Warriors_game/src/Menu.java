@@ -133,11 +133,24 @@ public class Menu {
         }
     public void update_character (String name, int health, int force) {
         Scanner keyboard = new Scanner(System.in);
-        //System.out.println("Modification du personnage \n Modifier le nom : 1 \n Modifier la santé : 2 \n Modifier la force : 3");
-        
-        Warriors update_warrior = new Warriors();
-        update_warrior.update_warrior();
+        Warriors warrior = new Warriors();
+        System.out.println("Modification du personnage");
+        System.out.println("Nouveau nom : ");
+        String newName = keyboard.nextLine();
+        System.out.println("Nouvelle santé : ");
+        int newHealth = keyboard.nextInt();
+        System.out.println("Nouvelle force : ");
+        int newForce = keyboard.nextInt();
+        keyboard.nextLine(); // Ignorer la ligne vide après avoir lu l'entier
 
+        // Appeler la fonction update_warrior() avec les nouvelles valeurs
+        warrior.update_warrior(newName, newHealth, newForce);
+
+        System.out.println("Les informations du Guerrier ont été mises à jour :");
+        System.out.println("Nom : " + warrior.getName());
+        System.out.println("Santé : " + warrior.getHealth());
+        System.out.println("Force : " + warrior.getForce());
+    }
     }
 }
 
