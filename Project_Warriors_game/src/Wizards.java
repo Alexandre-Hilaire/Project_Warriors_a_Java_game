@@ -24,6 +24,10 @@ public class Wizards {
         this.force = new_force;
     }
 
+    public String toString(){
+        return name+ " " + health + " "+ force + " " + spell + " " + potion;
+    }
+
     public String getName() {
         return name;
     }
