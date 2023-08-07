@@ -24,6 +24,8 @@ public class Game {
                 break;
             case 1:
                 playground_limit(map_length, moving(player_position));
+                // le  player_position doit s'incrémenter
+                playground(map_length);
                 break;
 
 
@@ -47,8 +49,5 @@ public class Game {
             player_position = playground_length;
             System.out.println("Le personnage est arrivé au bout du plateau à la case " + player_position);
         }
-//        else {
-//            playground();
-//        }
     }
 }
