@@ -12,6 +12,9 @@ public class Wizards {
         this.spell = spell;
         this.potion = potion;
     }
+    Wizards (String name) {
+        this.name = name;
+    }
     Wizards(){
 
     }

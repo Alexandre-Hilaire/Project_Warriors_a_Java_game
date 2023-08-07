@@ -14,6 +14,9 @@ public class Warriors {
         this.weapon = weapon;
         this.shield = shield;
     }
+    Warriors (String name){
+        this.name = name;
+    }
     Warriors () {
 
     }
