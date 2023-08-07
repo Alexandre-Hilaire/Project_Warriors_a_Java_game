@@ -1,5 +1,9 @@
 import java.util.Scanner;
+
 public class Menu {
+    String name;
+    int health = 0;
+    int force = 0;
     public void menu() {
         Scanner keyboard = new Scanner(System.in);
         String key;
@@ -41,22 +45,20 @@ public class Menu {
                 Menu menu = new Menu();
                 menu.menu();
         }
-
-        keyboard.close();
+        //keyboard.close();
+        Menu menu = new Menu();
+        menu.menu();
     }
 
     public Warriors warrior_creation() {
         Scanner keyboard = new Scanner(System.in);
-        String name;
-        int health = 0;
-        int force = 0;
         String weapon;
         String shield;
 
         System.out.println("Veuillez renseigner les caractéristiques du Guerrier");
 
         System.out.println("Entrez le nom du Guerrier");
-        name = keyboard.nextLine();
+        this.name = keyboard.nextLine();
         submenu_character_creation(name, health, force);
         do {
             System.out.println("Entrez la vie du Guerrier (entre 5 et 10)");
@@ -66,7 +68,7 @@ public class Menu {
         do {
             System.out.println("Entrez la force du Guerrier (entre 5 et 10)");
             force = keyboard.nextInt();
-            keyboard.nextLine(); // Doublement car il considère entrée comme un chaine vide du coup weapon serait " "
+            keyboard.nextLine(); // Doublement, car il considère entrée comme une chaine vide du coup weapon serait " "
         } while (force < 5 || force > 10);
         submenu_character_creation(name, health, force);
         System.out.println("Entrez le nom de l'arme du Guerrier");
@@ -76,16 +78,13 @@ public class Menu {
 
         Warriors new_warrior = new Warriors(name, health, force, weapon, shield);
 
-        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_warrior.name + "\n Santé "
-                + new_warrior.health + "\n Force : " + new_warrior.force + "\n Arme : " + new_warrior.weapon + "\n Bouclier : " + new_warrior.shield);
+        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_warrior.getName() + "\n Santé "
+                + new_warrior.getHealth() + "\n Force : " + new_warrior.getForce() + "\n Arme : " + new_warrior.getWeapon() + "\n Bouclier : " + new_warrior.getShield());
         return new_warrior;
     }
 
     public void wizards_creation() {
         Scanner keyboard = new Scanner(System.in);
-        String name;
-        int health;
-        int force;
         String spell;
         String potion;
 
@@ -100,7 +99,7 @@ public class Menu {
         do {
             System.out.println("Entrez la force du Mage (entre 8 et 15)");
             force = keyboard.nextInt();
-            keyboard.nextLine(); // Le doublement comme au dessus
+            keyboard.nextLine(); // Le doublement comme dessus
         } while (force < 8 || force > 15);
         System.out.println("Entrez le nom du sort du Mage");
         spell = keyboard.nextLine();
@@ -135,22 +134,25 @@ public class Menu {
         Scanner keyboard = new Scanner(System.in);
         Warriors warrior = new Warriors();
         System.out.println("Modification du personnage");
+        System.out.println("Ancien nom : " + name);
         System.out.println("Nouveau nom : ");
-        String newName = keyboard.nextLine();
+        name = keyboard.nextLine();
+        System.out.println("ancienne santé : " + health);
         System.out.println("Nouvelle santé : ");
-        int newHealth = keyboard.nextInt();
+        health = keyboard.nextInt();
+        System.out.println("Ancienne force : " + force);
         System.out.println("Nouvelle force : ");
-        int newForce = keyboard.nextInt();
+        force = keyboard.nextInt();
         keyboard.nextLine(); // Ignorer la ligne vide après avoir lu l'entier
 
-        // Appeler la fonction update_warrior() avec les nouvelles valeurs
-        warrior.update_warrior(newName, newHealth, newForce);
+        // Appeler la fonction update_warrior avec les nouvelles valeurs
+        warrior.update_warrior(name, health, force);
 
         System.out.println("Les informations du Guerrier ont été mises à jour :");
         System.out.println("Nom : " + warrior.getName());
         System.out.println("Santé : " + warrior.getHealth());
         System.out.println("Force : " + warrior.getForce());
     }
-    }
 }
+
 

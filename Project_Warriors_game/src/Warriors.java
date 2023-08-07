@@ -1,9 +1,11 @@
+import java.util.Scanner;
+
 public class Warriors {
-    String name;
-    int health;
-    int force;
-    String weapon;
-    String shield;
+    private String name;
+    private int health;
+    private int force;
+    private String weapon;
+    private String shield;
 
     Warriors (String name, int health, int force, String weapon, String shield){
         this.name = name;
@@ -15,16 +17,16 @@ public class Warriors {
     Warriors () {
 
     }
+    public void update_warrior (String new_name, int new_health, int new_force) {
+        this.name = new_name;
+        this.health = new_health;
+        this.force = new_force;
+    }
 
     public String toString(){
         return name+ " " + health + " "+ force + " " + weapon + " " + shield;
     }
 
-    public void update_warrior () {
-        this.name = name;
-        this.health = health;
-        this.force = force;
-    }
     public String getName() {
         return name;
     }
@@ -64,4 +66,5 @@ public class Warriors {
     public void setShield(String shield) {
         this.shield = shield;
     }
+
 }
