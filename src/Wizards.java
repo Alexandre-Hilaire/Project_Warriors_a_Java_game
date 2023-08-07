@@ -1,9 +1,9 @@
 public class Wizards {
-    String name;
-    int health;
-    int force;
-    String spell;
-    String potion;
+    private String name;
+    private int health;
+    private int force;
+    private String spell;
+    private String potion;
 
     public Wizards(String name, int health, int force, String spell, String potion) {
         this.name = name;

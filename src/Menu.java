@@ -7,13 +7,17 @@ public class Menu {
     public void menu() {
         Scanner keyboard = new Scanner(System.in);
         String key;
-        System.out.println("Enter \"1\" Pour créer un personnage \"0\" pour quitter le jeu");
+        System.out.println("Enter \"1\" Pour créer un personnage, \"2\" pour commencer une partie \"0\" pour quitter le jeu");
         key = keyboard.nextLine();
         switch (key) {
             case "1":
                 System.out.println("Vous entrez dans le menu création de personnage");
                 character_creation();
                 break;
+            case "2":
+                System.out.println("Lancement de la partie");
+                Game new_game = new Game();
+                Game.new_game();
             case "0":
                 System.out.println("Merci d'avoir joué au jeu");
                 System.exit(0);
@@ -114,8 +118,8 @@ public class Menu {
 
         Wizards new_wizard = new Wizards(name, health, force, spell, potion);
 
-        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_wizard.name + "\n Santé "
-                + new_wizard.health + "\n Force : " + new_wizard.force + "\n Sort : " + new_wizard.spell + "\n Potion : " + new_wizard.potion);
+        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_wizard.getName() + "\n Santé "
+                + new_wizard.getHealth() + "\n Force : " + new_wizard.getForce() + "\n Sort : " + new_wizard.getSpell() + "\n Potion : " + new_wizard.getPotion());
         return new_wizard;
     }
     public void submenu_character_creation (String name, int health, int force, String class_name) {
