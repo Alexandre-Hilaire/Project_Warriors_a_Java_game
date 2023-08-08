@@ -1,19 +1,13 @@
-public class Wizards {
-    private String name;
-    private int health;
-    private int force;
+public class Wizards extends Characters {
     private String spell;
     private String potion;
-
-    public Wizards(String name, int health, int force, String spell, String potion) {
-        this.name = name;
-        this.health = health;
-        this.force = force;
+    Wizards(String name, int health, int force, String potion) {
+        super(name, health, force);
         this.spell = spell;
         this.potion = potion;
     }
     Wizards (String name) {
-        this.name = name;
+        super(name);
     }
     Wizards(){
 
@@ -23,35 +17,6 @@ public class Wizards {
         this.health = new_health;
         this.force = new_force;
     }
-
-    public String toString(){
-        return name+ " " + health + " "+ force + " " + spell + " " + potion;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getForce() {
-        return force;
-    }
-
-    public void setForce(int force) {
-        this.force = force;
-    }
-
     public String getSpell() {
         return spell;
     }

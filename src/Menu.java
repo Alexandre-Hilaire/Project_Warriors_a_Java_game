@@ -56,7 +56,6 @@ public class Menu {
 
     public Warriors warrior_creation() {
         Scanner keyboard = new Scanner(System.in);
-        String weapon;
         String shield;
         String class_name = "Warrior";
 
@@ -74,20 +73,23 @@ public class Menu {
             keyboard.nextLine(); // Doublement, car il considère entrée comme une chaine vide du coup weapon serait " "
         } while (force < 5 || force > 10);
         System.out.println("Entrez le nom de l'arme du Guerrier");
-        weapon = keyboard.nextLine();
+        String weapon_name = keyboard.nextLine();
+        System.out.println("Entrez les dégats de l'arme");
+        int weapon_damages = keyboard.nextInt();
+        Weapons weapon = new Weapons(weapon_name, weapon_damages);
         System.out.println("Entrer le nom du bouclier du Guerrier");
         shield = keyboard.nextLine();
 
-        Warriors new_warrior = new Warriors(name, health, force, weapon, shield);
+        Warriors new_warrior = new Warriors(name, health, force, shield);
         submenu_character_creation(name, health, force, class_name);
-        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_warrior.getName() + "\n Santé "
-                + new_warrior.getHealth() + "\n Force : " + new_warrior.getForce() + "\n Arme : " + new_warrior.getWeapon() + "\n Bouclier : " + new_warrior.getShield());
+        System.out.println(new_warrior);
+//        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_warrior.getName() + "\n Santé "
+//                + new_warrior.getHealth() + "\n Force : " + new_warrior.getForce() + "\n Arme : " + weapon.getName() + "\n Dégats de l'arme "+ weapon.getDamages() + "\n Bouclier : " + new_warrior.getShield());
         return new_warrior;
     }
 
     public Wizards wizards_creation() {
         Scanner keyboard = new Scanner(System.in);
-        String spell;
         String potion;
         String class_name = "Wizard";
 
@@ -104,15 +106,18 @@ public class Menu {
             force = keyboard.nextInt();
             keyboard.nextLine(); // Le doublement comme dessus
         } while (force < 8 || force > 15);
-        System.out.println("Entrez le nom du sort du Mage");
-        spell = keyboard.nextLine();
+        System.out.println("Entrez le nom du sort");
+        String spell_name = keyboard.nextLine();
+        System.out.println("Entrez les dégats du sort");
+        int spell_damages = keyboard.nextInt();
+        Spells new_spell = new Spells(spell_name, spell_damages);
         System.out.println("Entrez le nom de la potion du Mage");
         potion = keyboard.nextLine();
 
-        Wizards new_wizard = new Wizards(name, health, force, spell, potion);
+        Wizards new_wizard = new Wizards(name, health, force, potion);
         submenu_character_creation(name, health, force, class_name);
         System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_wizard.getName() + "\n Santé "
-                + new_wizard.getHealth() + "\n Force : " + new_wizard.getForce() + "\n Sort : " + new_wizard.getSpell() + "\n Potion : " + new_wizard.getPotion());
+                + new_wizard.getHealth() + "\n Force : " + new_wizard.getForce() + "\n Sort : " + new_spell.getName() + "\n Dégats du sort " + new_spell.getDamages() + "\n Potion : " + new_wizard.getPotion());
         return new_wizard;
     }
     public void submenu_character_creation (String name, int health, int force, String class_name) {
