@@ -7,13 +7,17 @@ public class Menu {
     public void menu() {
         Scanner keyboard = new Scanner(System.in);
         String key;
-        System.out.println("Enter \"1\" Pour créer un personnage \"0\" pour quitter le jeu");
+        System.out.println("Enter \"1\" Pour créer un personnage, \"2\" pour commencer une partie \"0\" pour quitter le jeu");
         key = keyboard.nextLine();
         switch (key) {
             case "1":
                 System.out.println("Vous entrez dans le menu création de personnage");
                 character_creation();
                 break;
+            case "2":
+                System.out.println("Lancement de la partie");
+                Game new_game = new Game();
+                Game.new_game();
             case "0":
                 System.out.println("Merci d'avoir joué au jeu");
                 System.exit(0);
@@ -60,25 +64,22 @@ public class Menu {
 
         System.out.println("Entrez le nom du Guerrier");
         this.name = keyboard.nextLine();
-        submenu_character_creation(name, health, force, class_name);
         do {
             System.out.println("Entrez la vie du Guerrier (entre 5 et 10)");
             health = keyboard.nextInt();
         } while (health < 5 || health > 10);
-        submenu_character_creation(name, health, force, class_name);
         do {
             System.out.println("Entrez la force du Guerrier (entre 5 et 10)");
             force = keyboard.nextInt();
             keyboard.nextLine(); // Doublement, car il considère entrée comme une chaine vide du coup weapon serait " "
         } while (force < 5 || force > 10);
-        submenu_character_creation(name, health, force, class_name);
         System.out.println("Entrez le nom de l'arme du Guerrier");
         weapon = keyboard.nextLine();
         System.out.println("Entrer le nom du bouclier du Guerrier");
         shield = keyboard.nextLine();
 
         Warriors new_warrior = new Warriors(name, health, force, weapon, shield);
-
+        submenu_character_creation(name, health, force, class_name);
         System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_warrior.getName() + "\n Santé "
                 + new_warrior.getHealth() + "\n Force : " + new_warrior.getForce() + "\n Arme : " + new_warrior.getWeapon() + "\n Bouclier : " + new_warrior.getShield());
         return new_warrior;
@@ -93,29 +94,25 @@ public class Menu {
         System.out.println("Veuillez renseigner les caractéristiques du Mage");
         System.out.println("Entrez le nom du Mage");
         name = keyboard.nextLine();
-        submenu_character_creation(name, health, force, class_name);
+
         do {
             System.out.println("Entrez la vie du Mage (entre 3 et 6)");
             health = keyboard.nextInt();
         } while (health < 3 || health > 6);
-        submenu_character_creation(name, health, force, class_name);
         do {
             System.out.println("Entrez la force du Mage (entre 8 et 15)");
             force = keyboard.nextInt();
             keyboard.nextLine(); // Le doublement comme dessus
         } while (force < 8 || force > 15);
-        submenu_character_creation(name, health, force, class_name);
         System.out.println("Entrez le nom du sort du Mage");
         spell = keyboard.nextLine();
-        submenu_character_creation(name, health, force,class_name);
         System.out.println("Entrez le nom de la potion du Mage");
         potion = keyboard.nextLine();
-        submenu_character_creation(name, health, force, class_name);
 
         Wizards new_wizard = new Wizards(name, health, force, spell, potion);
-
-        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_wizard.name + "\n Santé "
-                + new_wizard.health + "\n Force : " + new_wizard.force + "\n Sort : " + new_wizard.spell + "\n Potion : " + new_wizard.potion);
+        submenu_character_creation(name, health, force, class_name);
+        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_wizard.getName() + "\n Santé "
+                + new_wizard.getHealth() + "\n Force : " + new_wizard.getForce() + "\n Sort : " + new_wizard.getSpell() + "\n Potion : " + new_wizard.getPotion());
         return new_wizard;
     }
     public void submenu_character_creation (String name, int health, int force, String class_name) {
