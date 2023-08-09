@@ -4,6 +4,9 @@ public class Menu {
     String name;
     int health = 0;
     int force = 0;
+    boolean is_warrior = false;
+    boolean is_wizard = false;
+
     public void menu() {
         Scanner keyboard = new Scanner(System.in);
         String key;
@@ -12,7 +15,7 @@ public class Menu {
         switch (key) {
             case "1":
                 System.out.println("Vous entrez dans le menu création de personnage");
-                character_creation();
+                new_character_creation_menu();
                 break;
             case "2":
                 System.out.println("Lancement de la partie");
@@ -26,7 +29,7 @@ public class Menu {
         keyboard.close();
     }
 
-    public void character_creation() {
+    public void new_character_creation_menu() {
         Scanner keyboard = new Scanner(System.in);
         String key;
         System.out.println("Choisissez la classe du personnage \n 1 Guerrier \n 2 Mage \n 3 pour revenir au menu principal \n 0 pour quitter le jeu");
@@ -38,11 +41,15 @@ public class Menu {
                 break;
             case "1":
                 System.out.println("Vous avez choisi Guerrier");
-                warrior_creation();
+                is_warrior = true;
+                character_creation();
+               // warrior_creation();
                 break;
             case "2":
                 System.out.println("Vous avez choisi Mage");
-                wizards_creation();
+                is_wizard = true;
+                character_creation();
+               // wizards_creation();
                 break;
             case "3":
                 System.out.println("Retour au menu précédent");
@@ -53,7 +60,72 @@ public class Menu {
         Menu menu = new Menu();
         menu.menu();
     }
+    public void character_creation () {
+        Scanner keyboard = new Scanner(System.in);
+        if (is_warrior){
+            String shield;
+            String class_name = "Warrior";
+            System.out.println("Veuillez renseigner les caractéristiques du Guerrier");
 
+            System.out.println("Entrez le nom du Guerrier");
+            this.name = keyboard.nextLine();
+            do {
+                System.out.println("Entrez la vie du Guerrier (entre 5 et 10)");
+                health = keyboard.nextInt();
+                keyboard.nextLine();
+            } while (health < 5 || health > 10);
+            do {
+                System.out.println("Entrez la force du Guerrier (entre 5 et 10)");
+                force = keyboard.nextInt();
+                keyboard.nextLine(); // Doublement, car il considère entrée comme une chaine vide du coup weapon serait " "
+            } while (force < 5 || force > 10);
+            System.out.println("Entrez le nom de l'arme du Guerrier");
+            String weapon_name = keyboard.nextLine();
+            System.out.println("Entrez les dégats de l'arme");
+            int weapon_damages = keyboard.nextInt();
+            keyboard.nextLine();
+            Weapons weapon = new Weapons(weapon_name, weapon_damages);
+            System.out.println("Entrer le nom du bouclier du Guerrier");
+            shield = keyboard.nextLine();
+
+            Warriors new_warrior = new Warriors(name, health, force, shield);
+            submenu_character_creation(name, health, force, class_name);
+            System.out.println(new_warrior);
+
+            return new_warrior;
+        }
+
+        else if (is_wizard) {
+            String potion;
+            String class_name = "Wizard";
+
+            System.out.println("Veuillez renseigner les caractéristiques du Mage");
+            System.out.println("Entrez le nom du Mage");
+            name = keyboard.nextLine();
+
+            do {
+                System.out.println("Entrez la vie du Mage (entre 3 et 6)");
+                health = keyboard.nextInt();
+            } while (health < 3 || health > 6);
+            do {
+                System.out.println("Entrez la force du Mage (entre 8 et 15)");
+                force = keyboard.nextInt();
+                keyboard.nextLine(); // Le doublement comme dessus
+            } while (force < 8 || force > 15);
+            System.out.println("Entrez le nom du sort");
+            String spell_name = keyboard.nextLine();
+            System.out.println("Entrez les dégats du sort");
+            int spell_damages = keyboard.nextInt();
+            Spells new_spell = new Spells(spell_name, spell_damages);
+            System.out.println("Entrez le nom de la potion du Mage");
+            potion = keyboard.nextLine();
+
+            Wizards new_wizard = new Wizards(name, health, force, potion);
+            submenu_character_creation(name, health, force, class_name);
+            System.out.println(new_wizard);
+            return new_wizard;
+        }
+    }
     public Warriors warrior_creation() {
         Scanner keyboard = new Scanner(System.in);
         String shield;

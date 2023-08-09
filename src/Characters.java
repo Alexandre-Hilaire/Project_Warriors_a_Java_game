@@ -4,6 +4,8 @@ abstract class Characters {
     public int force;
     Characters (String name){
         this.name = name;
+        this.health = 0;
+        this.force = 0;
     }
     Characters (String name, int health, int force){
         this.name = name;
@@ -11,6 +13,9 @@ abstract class Characters {
         this.force = force;
     }
     Characters (){
+        this.name = "";
+        this.health = 0;
+        this.force = 0;
     }
 
 

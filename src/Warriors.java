@@ -10,7 +10,7 @@ public class Warriors extends Characters{
         super(name);
     }
     Warriors () {
-
+        //super(name);
     }
 
     @Override
