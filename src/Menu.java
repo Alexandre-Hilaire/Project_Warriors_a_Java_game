@@ -17,7 +17,7 @@ public class Menu {
             case "2":
                 System.out.println("Lancement de la partie");
                 Game new_game = new Game();
-                Game.new_game();
+                new_game.new_game();
             case "0":
                 System.out.println("Merci d'avoir joué au jeu");
                 System.exit(0);
