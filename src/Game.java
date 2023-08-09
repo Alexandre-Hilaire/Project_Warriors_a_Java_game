@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class Game {
-    public static void new_game() {
+    public void new_game() {
         //int player_position = 1 ; // Le joueur débute à la première case
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Créez le plateau \n, quel nom lui donnez vous ? \n nom du plateau : ");
@@ -13,48 +13,60 @@ public class Game {
         play(map_length);
     }
 
-    public static void play(int map_length) {
+    public void play(int map_length) {
         int player_position = 1; // Le joueur débute à la première case
-        while (!playground_limit(map_length, player_position)) {
+        boolean play = true;
+        while ((player_position < map_length) && (play)) {
             switch (player_input()) {
-            case 0:
-                System.out.println("Merci d'avoir joué");
-                System.exit(0);
-                break;
-            case 1:
-                player_position = moving(player_position);
-                if (playground_limit(map_length, player_position)) {
-                   System.out.println("Bravo vous avez gagné la partie !");
-                   break;
-                   }
-                }
+                case 0:
+                    System.out.println("Merci d'avoir joué");
+                    System.exit(0);
+                    break;
+                case 1:
+                    try {
+                        player_position = moving(player_position, map_length);
+                    } catch (Character_out_of_playground e) {
+                        System.out.println("exception " + e.getMessage());
+                        play = false;
+                    break;
+                    }
 
+            }
         }
-
+        Menu menu = new Menu(); // Retour au menu principal
+        menu.menu();
     }
 
-    public static int moving(int player_position) {
+    public int moving(int player_position, int map_length)  throws Character_out_of_playground {
         int dice = (int) (Math.random() * 6) + 1;
         System.out.println("Lancement du dé de déplacement \n Résultat du dé : " + dice);
         player_position += dice;
 
-        if (player_position < 64) {
+
+        if (player_position == map_length){
+            System.out.println("Bravo vous avez gagné !");
+        }
+        else if (player_position > map_length) {
+            throw new Character_out_of_playground("Le joueur est sorti du plateau");
+        }
+        else {
             System.out.println("La position du personnage est la case " + player_position);
         }
+
         return player_position;
     }
 
-    public static boolean playground_limit(int playground_length,int player_position) {
-        boolean playground_end = false;
-        if (player_position >= playground_length) {
-            player_position = playground_length;
-            playground_end = true;
-            System.out.println("Le personnage est arrivé au bout du plateau à la case " + player_position);
-        }
-        return playground_end;
-    }
+//    public boolean playground_limit(int playground_length,int player_position) {
+//        boolean playground_end = false;
+//        if (player_position >= playground_length) {
+//            player_position = playground_length;
+//            playground_end = true;
+//            System.out.println("Le personnage est arrivé au bout du plateau à la case " + player_position);
+//        }
+//        return playground_end;
+//    }
 
-    public static int player_input (){
+    public int player_input (){
         int player_input;
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Que voulez-vous faire ? \n 1 : Lancer un dés de déplacement \n 0 : Quitter le jeu");
