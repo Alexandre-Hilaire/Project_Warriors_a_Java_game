@@ -15,8 +15,8 @@ public class Warriors extends Characters{
 
     @Override
     public String toString() {
-        return  "Le nom du Guerrier est \n, name='" + this.getName() +
-                "\n, shield='" + this.getShield() +
+        return  "Le nom du Guerrier est " + this.getName() +
+                "\n, shield=" + this.getShield() +
                 "\n, health=" + this.getHealth() +
                 "\n, force=" + this.getForce() +
                 '}';
@@ -27,14 +27,6 @@ public class Warriors extends Characters{
         this.health = new_health;
         this.force = new_force;
     }
-
-//    public String getWeapon() {
-//        return weapon;
-//    }
-//
-//    public void setWeapon(String weapon) {
-//        this.weapon = weapon;
-//    }
 
     public String getShield() {
         return shield;

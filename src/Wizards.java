@@ -12,6 +12,17 @@ public class Wizards extends Characters {
     Wizards(){
 
     }
+
+    @Override
+    public String toString() {
+        return "Le nom du Mage est" + this.getName() +
+                "\n sort : " + this.getSpell() +
+                "\n potion : " + this.getPotion() +
+                "\n santé : " + this.getHealth() +
+                "\n force : "+ this.getForce() +
+                '}';
+    }
+
     public void update_wizards (String new_name, int new_health, int new_force) {
         this.name = new_name;
         this.health = new_health;

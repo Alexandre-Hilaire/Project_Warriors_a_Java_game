@@ -66,6 +66,7 @@ public class Menu {
         do {
             System.out.println("Entrez la vie du Guerrier (entre 5 et 10)");
             health = keyboard.nextInt();
+            keyboard.nextLine();
         } while (health < 5 || health > 10);
         do {
             System.out.println("Entrez la force du Guerrier (entre 5 et 10)");
@@ -76,6 +77,7 @@ public class Menu {
         String weapon_name = keyboard.nextLine();
         System.out.println("Entrez les dégats de l'arme");
         int weapon_damages = keyboard.nextInt();
+        keyboard.nextLine();
         Weapons weapon = new Weapons(weapon_name, weapon_damages);
         System.out.println("Entrer le nom du bouclier du Guerrier");
         shield = keyboard.nextLine();
@@ -83,8 +85,6 @@ public class Menu {
         Warriors new_warrior = new Warriors(name, health, force, shield);
         submenu_character_creation(name, health, force, class_name);
         System.out.println(new_warrior);
-//        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_warrior.getName() + "\n Santé "
-//                + new_warrior.getHealth() + "\n Force : " + new_warrior.getForce() + "\n Arme : " + weapon.getName() + "\n Dégats de l'arme "+ weapon.getDamages() + "\n Bouclier : " + new_warrior.getShield());
         return new_warrior;
     }
 
@@ -116,8 +116,7 @@ public class Menu {
 
         Wizards new_wizard = new Wizards(name, health, force, potion);
         submenu_character_creation(name, health, force, class_name);
-        System.out.println("Voici les caractéristiques de votre nouveau Guerrier\n" + "Nom : " + new_wizard.getName() + "\n Santé "
-                + new_wizard.getHealth() + "\n Force : " + new_wizard.getForce() + "\n Sort : " + new_spell.getName() + "\n Dégats du sort " + new_spell.getDamages() + "\n Potion : " + new_wizard.getPotion());
+        System.out.println(new_wizard);
         return new_wizard;
     }
     public void submenu_character_creation (String name, int health, int force, String class_name) {
