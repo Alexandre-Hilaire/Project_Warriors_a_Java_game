@@ -1,10 +1,11 @@
 public class Warriors extends Characters{
 //    private String weapon;
-    private String shield;
-
-    Warriors (String name, int health, int force, String shield){
+    private Weapons weapon;
+    private Shields shield;
+    Warriors (String name, int health, int force, Shields shield, Weapons weapon){
         super(name, health, force);
         this.shield = shield;
+        this.weapon = weapon;
     }
     Warriors (String name){
         super(name);

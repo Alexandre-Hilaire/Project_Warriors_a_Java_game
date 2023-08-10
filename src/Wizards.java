@@ -1,10 +1,10 @@
 public class Wizards extends Characters {
-    private String spell;
-    private String potion;
-    Wizards(String name, int health, int force, String potion) {
+    private Spells spell;
+    private Potion potion;
+    Wizards(String name, int health, int force, Spells spell ,Potion potion) {
         super(name, health, force);
-        this.spell = spell;
         this.potion = potion;
+        this.spell = spell;
     }
     Wizards (String name) {
         super(name);
