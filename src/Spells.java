@@ -5,6 +5,10 @@ public class Spells {
         this.name = name;
         this.damages = damages;
     }
+    public String toString (){
+        return "Le nom du sort est " + getName()
+        +"\n La valeur de l'effet est " + getDamages();
+    }
 
     public String getName() {
         return name;

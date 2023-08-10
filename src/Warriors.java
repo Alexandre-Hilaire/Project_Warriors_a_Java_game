@@ -2,7 +2,7 @@ public class Warriors extends Characters{
 //    private String weapon;
     private Weapons weapon;
     private Shields shield;
-    Warriors (String name, int health, int force, Shields shield, Weapons weapon){
+    Warriors (String name, int health, int force, Weapons weapon, Shields shield){
         super(name, health, force);
         this.shield = shield;
         this.weapon = weapon;
@@ -17,24 +17,16 @@ public class Warriors extends Characters{
     @Override
     public String toString() {
         return  "Le nom du Guerrier est " + this.getName() +
-                "\n, shield=" + this.getShield() +
-                "\n, health=" + this.getHealth() +
-                "\n, force=" + this.getForce() +
-                '}';
+                "\n Santé : " + this.getHealth()+
+                "\n Force : " + this.getForce() +
+                "\n Bouclier : " + this.shield +
+                "\n Armes : " + this.weapon;
     }
 
     public void update_warrior (String new_name, int new_health, int new_force) {
         this.name = new_name;
         this.health = new_health;
         this.force = new_force;
-    }
-
-    public String getShield() {
-        return shield;
-    }
-
-    public void setShield(String shield) {
-        this.shield = shield;
     }
 
 }

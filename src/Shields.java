@@ -9,6 +9,9 @@ public class Shields {
     public String getName() {
         return name;
     }
+    public String toString(){
+        return "Nom du Bouclier " + getName() + "\n Valeur d'armure de "+ getName() + " : " + getArmor();
+    }
 
     public void setName(String name) {
         this.name = name;

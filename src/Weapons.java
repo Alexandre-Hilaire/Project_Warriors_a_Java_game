@@ -6,6 +6,10 @@ public class Weapons {
         this.name = name;
         this.damages = damages;
     }
+    public String toString() {
+        return "Le nom de l'arme est " + this.getName() +
+                "\n Les dégats de " + this.getName() + " : " + this.getDamages();
+    }
 
     public String getName() {
         return name;
