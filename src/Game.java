@@ -55,17 +55,6 @@ public class Game {
 
         return player_position;
     }
-
-//    public boolean playground_limit(int playground_length,int player_position) {
-//        boolean playground_end = false;
-//        if (player_position >= playground_length) {
-//            player_position = playground_length;
-//            playground_end = true;
-//            System.out.println("Le personnage est arrivé au bout du plateau à la case " + player_position);
-//        }
-//        return playground_end;
-//    }
-
     public int player_input (){
         int player_input;
         Scanner keyboard = new Scanner(System.in);

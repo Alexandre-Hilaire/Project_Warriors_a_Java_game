@@ -5,3 +5,5 @@ public class Main {
         menu.menu();
     }
 }
+
+//TODO finir la refacto de la fonction update_characters_specs

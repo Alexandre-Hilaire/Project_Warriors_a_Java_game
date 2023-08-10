@@ -1,5 +1,4 @@
 public class Warriors extends Characters{
-//    private String weapon;
     private Weapons weapon;
     private Shields shield;
     Warriors (String name, int health, int force, Weapons weapon, Shields shield){
