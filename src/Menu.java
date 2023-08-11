@@ -69,7 +69,7 @@ public class Menu {
         characters_basics_specs();
         Weapons weapon = warrior_weapons_creation();
         Shields shield = warrior_shields_creation();
-        Warriors new_warrior = new Warriors(name, health, force, weapon, shield);
+        Characters new_warrior = new Warriors(name, health, force, weapon, shield);
         submenu_character_creation(new_warrior);
         System.out.println(new_warrior);
     }
@@ -77,7 +77,7 @@ public class Menu {
         characters_basics_specs();
         Spells spell = wizard_spells_creation();
         Potion potion = wizard_potions_creation();
-        Wizards new_wizard = new Wizards(name, health, force, spell, potion);
+        Characters new_wizard = new Wizards(name, health, force, spell, potion);
         submenu_character_creation(new_wizard);
         System.out.println(new_wizard);
     }

@@ -18,7 +18,7 @@ public class Wizards extends Characters {
 
     @Override
     public String toString() {
-        return "Le nom du Mage est" + this.getName() +
+        return "Le nom du Mage est " + this.getName() +
                 "\n santé : " + this.getHealth() +
                 "\n force : " + this.getForce() +
                 "\n sort : " + this.spell +
