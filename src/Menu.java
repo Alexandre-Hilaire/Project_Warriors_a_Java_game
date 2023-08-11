@@ -158,11 +158,9 @@ public class Menu {
             case 2:
                 if (is_warrior) {
                     update_characters_specs(new_character);
-                    update_warriors();
                 }
                 else if (is_wizard){
                     update_characters_specs(new_character);
-                    update_wizards(this.name, this.health, this.force);
                 }
                 break;
 
@@ -172,8 +170,10 @@ public class Menu {
             }
         }
 
-        public void update_characters_specs (Characters new_character){
+        public void update_characters_specs (Characters new_character) {
             Scanner keyboard = new Scanner(System.in);
+            int new_health;
+            int new_force;
             System.out.println("Modification des caractéristiques principale du personnage");
             System.out.println("Ancien nom du personnage " + new_character.getName() + "\n Entrez un nouveau nom ");
             String new_name = keyboard.nextLine();
@@ -182,87 +182,31 @@ public class Menu {
                 System.out.println("Ancienne santé" + new_character.getHealth());
                 do {
                     System.out.println("Entrez la nouvelle santé du Guerrier (entre 5 et 10");
-                    int new_health = keyboard.nextInt();
+                    new_health = keyboard.nextInt();
                     new_character.setHealth(new_health);
                 } while (new_character.health < 5 || new_character.health > 10);
-                System.out.println("Ancienne force du Guerrier : " + this.force);
+                System.out.println("Ancienne force du Guerrier : " + new_character.getForce());
                 do {
-                System.out.println("Entrez la nouvelle force du Guerrier (entre 5 et 10)");
-                int new_force = keyboard.nextInt();
-                new_character.setForce(new_force);
+                    System.out.println("Entrez la nouvelle force du Guerrier (entre 5 et 10)");
+                    new_force = keyboard.nextInt();
+                    new_character.setForce(new_force);
                 } while (new_character.force < 5 || new_character.force > 10);
-                keyboard.nextLine();
-                System.out.println("Ancien nom de l'arme" + warrior_shields_creation().getName() + "\n Entrez le nouveau nom de l'arme : ");
-                String new_shield_name = keyboard.nextLine();
-                warrior_shields_creation().setName(new_shield_name);
-            }
-            else if (is_wizard){
-                System.out.println("Ancienne santé" + this.health);
+
+            } else if (is_wizard) {
+                System.out.println("Ancienne santé" + new_character.getHealth());
                 do {
-                    System.out.println("Entrez la nouvelle santé du Mage (entre 5 et 10)");
-                    this.health = keyboard.nextInt();
-                } while (this.health < 3 || this.health > 6);
-                System.out.println("Ancienne force du mage : " + this.force);
+                    System.out.println("Entrez la nouvelle santé du Mage (entre 3 et 6)");
+                    new_health = keyboard.nextInt();
+                    new_character.setHealth(new_health);
+                } while (new_character.health < 3 || new_character.health > 6);
+                System.out.println("Ancienne force du mage : " + new_character.getForce());
                 do {
-                    System.out.println("Entrez la nouvelle force du Mage (entre 5 et 10)");
-                this.force = keyboard.nextInt();
+                    System.out.println("Entrez la nouvelle force du Mage (entre 8 et 15)");
+                    new_force = keyboard.nextInt();
+                    new_character.setForce(new_force);
                 } while (this.force < 8 || this.force > 15);
             }
         }
-//    public void update_warriors (String name, int health, int force) {
-//        Scanner keyboard = new Scanner(System.in);
-//        Warriors warrior = new Warriors();
-//        System.out.println("Modification du personnage");
-//        System.out.println("Ancien nom : " + name);
-//        System.out.println("Nouveau nom : ");
-//        name = keyboard.nextLine();
-//        System.out.println("ancienne santé : " + health);
-//        do {
-//            System.out.println("Entrez la nouvelle santé du Guerrier (entre 5 et 10)");
-//            health = keyboard.nextInt();
-//        } while (health < 5 || health > 10);
-//        System.out.println("Ancienne force : " + force);
-//        do {
-//            System.out.println("Entrez la nouvelle force du Guerrier (entre 5 et 10)");
-//            force = keyboard.nextInt();
-//        } while (force < 5 || force > 10);
-//        keyboard.nextLine(); // Ignorer la ligne vide après avoir lu l'entier
-//
-//        // Appeler la fonction update_warrior avec les nouvelles valeurs
-//        warrior.update_warrior(name, health, force);
-//
-//        System.out.println("Les informations du Guerrier ont été mises à jour :");
-//        System.out.println("Nom : " + warrior.getName());
-//        System.out.println("Santé : " + warrior.getHealth());
-//        System.out.println("Force : " + warrior.getForce());
-//    }
-//    public void update_wizards (String name, int health, int force) {
-//        Scanner keyboard = new Scanner(System.in);
-//        Wizards wizards = new Wizards();
-//        System.out.println("Modification du personnage");
-//        System.out.println("Ancien nom : " + name);
-//        System.out.println("Nouveau nom : ");
-//        name = keyboard.nextLine();
-//        System.out.println("ancienne santé : " + health);
-//        do {
-//            System.out.println("Entrez la nouvelle santé du Mage (entre 5 et 10)");
-//            health = keyboard.nextInt();
-//        } while (health < 3 || health > 6);
-//        System.out.println("Ancienne force : " + force);
-//        do {
-//            System.out.println("Entrez la nouvelle force du Mage (entre 5 et 10)");
-//            force = keyboard.nextInt();
-//        } while (force < 8 || force > 15);
-//        keyboard.nextLine(); // Ignorer la ligne vide après avoir lu l'entier
-//
-//        // Appeler la fonction update_warrior avec les nouvelles valeurs
-//        wizards.update_wizards(name, health, force);
-//
-//        System.out.println("Les informations du Guerrier ont été mises à jour :");
-//        System.out.println("Nom : " + wizards.getName());
-//        System.out.println("Santé : " + wizards.getHealth());
-//        System.out.println("Force : " + wizards.getForce());
-//    }
 }
 
 
