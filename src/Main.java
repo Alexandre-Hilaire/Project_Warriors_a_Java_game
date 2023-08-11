@@ -6,4 +6,4 @@ public class Main {
     }
 }
 
-//TODO finir la refacto de la fonction update_characters_specs
+//TODO fini la refacto avec l'héritage de characters

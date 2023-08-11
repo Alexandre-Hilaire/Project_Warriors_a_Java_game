@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Game {
+public class Game implements Dices {
     public void new_game() {
         //int player_position = 1 ; // Le joueur débute à la première case
         Scanner keyboard = new Scanner(System.in);
@@ -36,9 +36,11 @@ public class Game {
         Menu menu = new Menu(); // Retour au menu principal
         menu.menu();
     }
-
+    public int roll_dice(){
+        return (int) (Math.random() * 6) + 1;
+    }
     public int moving(int player_position, int map_length)  throws Character_out_of_playground {
-        int dice = (int) (Math.random() * 6) + 1;
+        int dice = roll_dice();
         System.out.println("Lancement du dé de déplacement \n Résultat du dé : " + dice);
         player_position += dice;
 
