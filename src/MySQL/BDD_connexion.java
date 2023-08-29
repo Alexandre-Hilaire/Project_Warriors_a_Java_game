@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
 public class BDD_connexion {
-    public static void connexion_to_database() {
+    public static Connection connexion_to_database() {
         String url = "jdbc:mysql://localhost:3306/heroes";
         String username = "player";
         String password = "player_password";
@@ -14,10 +14,10 @@ public class BDD_connexion {
         try {
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("Connexion réussie !");
-            select_heroes(connection);
         } catch (SQLException e) {
             System.out.println("Echec de la connexion : " + e.getMessage());
         }
+        return connection;
         // bloc pour fermer la connexion
 //        finally {
 //            try {
@@ -30,7 +30,7 @@ public class BDD_connexion {
 //            }
 //        }
     }
-    private static void select_heroes(Connection connection){
+    public static void select_heroes(Connection connection){
         String query = "SELECT * FROM heroe";
         try {
             Statement statement = connection.createStatement();
@@ -44,7 +44,7 @@ public class BDD_connexion {
                 int force_value = resultSet.getInt("force_value");
                 String weapons_spells = resultSet.getString("weapons_spells");
                 String shield = resultSet.getString("shield");
-                System.out.println("ID" + id + " , class : " + heroes_class + ", Name: " + name + ", Health" + health + ", " + weapons_spells + ", " + shield);
+                System.out.println(id + " , class : " + heroes_class + ", Name : " + name + ", Health " + health + ", Force : " + force_value + ", " + weapons_spells + ", " + shield);
             }
         }
         catch (SQLException e) {

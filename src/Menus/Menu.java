@@ -1,12 +1,12 @@
 package Menus;
-
 import MySQL.BDD_connexion;
+import java.sql.Connection;
+import java.sql.SQLException;
 import characters.Warriors;
 import characters.Wizards;
 import game.Game;
 import items_skills.Spells;
 import items_skills.Weapons;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -46,7 +46,8 @@ public class Menu {
                             "2 : Créer un nouveau personnage");
         switch (keyboard.nextInt()) {
             case 1 :
-                BDD_connexion.connexion_to_database();
+                Connection connection = BDD_connexion.connexion_to_database();
+                BDD_connexion.select_heroes(connection);
                 break;
             case 2 :
                 new_character_creation();
