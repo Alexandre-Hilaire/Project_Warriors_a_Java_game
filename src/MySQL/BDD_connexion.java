@@ -8,6 +8,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BDD_connexion {
     public static Connection connexion_to_database() {
         String url = "jdbc:mysql://localhost:3306/heroes";
@@ -33,7 +36,8 @@ public class BDD_connexion {
 //            }
 //        }
     }
-    public static void select_heroes(Connection connection){
+    public static List<Character> select_heroes(Connection connection){
+        List<Character> characters = new ArrayList<>();
         String query = "SELECT * FROM heroe";
         try {
             Statement statement = connection.createStatement();
@@ -48,24 +52,11 @@ public class BDD_connexion {
                 String weapons_spells = resultSet.getString("weapons_spells");
                 String shield = resultSet.getString("shield");
                 System.out.println(id + " , class : " + heroes_class + ", Name : " + name + ", Health " + health + ", Force : " + force_value + ", " + weapons_spells + ", " + shield);
-// partie de la fonction à mettre ailleurs dans le menu idéalement
-//                if (heroes_class.equals("Warrior")) {
-//                    Warriors new_warrior = new Warriors(name, health, force_value, shield);
-//                }
-//                else if (heroes_class.equals("Wizards")){
-//                    Wizards new_wizard = new Wizards(name,health,force_value, weapons_spells);
-//                }
-//                System.out.println("Le personnage choisi est : \n " +
-//                        heroes_class + "\n" +
-//                        name + "\n" +
-//                        health + "\n" +
-//                        force_value + "\n"+
-//                        weapons_spells + "\n" +
-//                        shield);
             }
         }
         catch (SQLException e) {
             System.out.println("erreur SQL : " + e.getMessage());
         }
+        return characters;
     }
 }

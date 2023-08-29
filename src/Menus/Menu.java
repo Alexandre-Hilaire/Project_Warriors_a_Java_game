@@ -47,7 +47,10 @@ public class Menu {
         switch (keyboard.nextInt()) {
             case 1 :
                 Connection connection = BDD_connexion.connexion_to_database();
-                BDD_connexion.select_heroes(connection);
+                List<Character> characters = BDD_connexion.select_heroes(connection);
+                for (Character character : characters){
+                    System.out.println(character.toString());
+                }
                 Menu menu = new Menu();
                 menu.menu();
                 break;
