@@ -48,6 +48,8 @@ public class Menu {
             case 1 :
                 Connection connection = BDD_connexion.connexion_to_database();
                 BDD_connexion.select_heroes(connection);
+                Menu menu = new Menu();
+                menu.menu();
                 break;
             case 2 :
                 new_character_creation();
@@ -83,7 +85,6 @@ public class Menu {
                 Menu menu = new Menu();
                 menu.menu();
         }
-        //keyboard.close();
         Menu menu = new Menu();
         menu.menu();
     }
