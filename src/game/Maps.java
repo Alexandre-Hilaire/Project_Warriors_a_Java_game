@@ -1,3 +1,5 @@
+package game;
+
 public class Maps {
     private String name;
     private int length;

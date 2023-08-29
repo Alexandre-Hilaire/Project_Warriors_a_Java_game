@@ -1,6 +1,9 @@
+package Menus;
+
 import MySQL.BDD_connexion;
 import characters.Warriors;
 import characters.Wizards;
+import game.Game;
 import items_skills.Spells;
 import items_skills.Weapons;
 

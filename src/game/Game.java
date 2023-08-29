@@ -1,3 +1,6 @@
+package game;
+import Menus.Menu;
+
 import java.util.Scanner;
 public class Game {
     public void new_game() {
