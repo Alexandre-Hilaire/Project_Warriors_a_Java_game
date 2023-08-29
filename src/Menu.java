@@ -1,3 +1,7 @@
+import characters.Warriors;
+import characters.Wizards;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -26,9 +30,14 @@ public class Menu {
         keyboard.close();
     }
 
+    //Liste des personnages
+    List<Warriors> warriorsList = new ArrayList<>();
+    List<Wizards> wizardsList = new ArrayList<>();
+
     public void character_creation() {
         Scanner keyboard = new Scanner(System.in);
         String key;
+
         System.out.println("Choisissez la classe du personnage \n 1 Guerrier \n 2 Mage \n 3 pour revenir au menu principal \n 0 pour quitter le jeu");
         key = keyboard.nextLine();
         switch (key) {
@@ -38,11 +47,16 @@ public class Menu {
                 break;
             case "1":
                 System.out.println("Vous avez choisi Guerrier");
-                warrior_creation();
+                Warriors new_warrior = warrior_creation();
+                warriorsList.add(new_warrior);
+                displayWarriors();
+
                 break;
             case "2":
                 System.out.println("Vous avez choisi Mage");
-                wizards_creation();
+                Wizards new_wizards = wizards_creation();
+                wizardsList.add(new_wizards);
+                displayWizards();
                 break;
             case "3":
                 System.out.println("Retour au menu précédent");
@@ -82,7 +96,7 @@ public class Menu {
         System.out.println("Entrer le nom du bouclier du Guerrier");
         shield = keyboard.nextLine();
 
-        Warriors new_warrior = new Warriors(name, health, force, shield);
+        characters.Warriors new_warrior = new characters.Warriors(name, health, force, shield);
         submenu_character_creation(name, health, force, class_name);
         System.out.println(new_warrior);
         return new_warrior;
@@ -119,6 +133,18 @@ public class Menu {
         System.out.println(new_wizard);
         return new_wizard;
     }
+    public void displayWarriors() {
+        System.out.println("Liste des guerriers :");
+        for (Warriors warrior : warriorsList) {
+            System.out.println(warrior);
+        }
+    }
+    public void displayWizards() {
+        System.out.println("Liste des mages :");
+        for (Wizards wizard : wizardsList) {
+            System.out.println(wizard);
+        }
+    }
     public void submenu_character_creation (String name, int health, int force, String class_name) {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Que voulez-vous faire ? \n Afficher les infos du personnage : 1 \n" +
@@ -142,6 +168,7 @@ public class Menu {
                 break;
             }
         }
+
     public void update_warriors (String name, int health, int force) {
         Scanner keyboard = new Scanner(System.in);
         Warriors warrior = new Warriors();
@@ -196,6 +223,7 @@ public class Menu {
         System.out.println("Santé : " + wizards.getHealth());
         System.out.println("Force : " + wizards.getForce());
     }
+
 }
 
 

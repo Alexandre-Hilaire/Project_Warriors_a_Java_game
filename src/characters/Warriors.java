@@ -1,15 +1,17 @@
+package characters;
+
 public class Warriors extends Characters{
 //    private String weapon;
     private String shield;
 
-    Warriors (String name, int health, int force, String shield){
+    public Warriors (String name, int health, int force, String shield){
         super(name, health, force);
         this.shield = shield;
     }
-    Warriors (String name){
+    public Warriors (String name){
         super(name);
     }
-    Warriors () {
+    public Warriors () {
 
     }
 

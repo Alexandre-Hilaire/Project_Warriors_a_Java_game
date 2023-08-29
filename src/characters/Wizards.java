@@ -1,15 +1,17 @@
+package characters;
+
 public class Wizards extends Characters {
     private String spell;
     private String potion;
-    Wizards(String name, int health, int force, String potion) {
+    public Wizards(String name, int health, int force, String potion) {
         super(name, health, force);
         this.spell = spell;
         this.potion = potion;
     }
-    Wizards (String name) {
+    public Wizards (String name) {
         super(name);
     }
-    Wizards(){
+    public Wizards(){
 
     }
 
