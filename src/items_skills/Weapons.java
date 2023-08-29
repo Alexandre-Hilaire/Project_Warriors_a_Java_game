@@ -1,7 +1,10 @@
-public class Spells {
+package items_skills;
+
+public class Weapons {
     private String name;
     private int damages;
-    Spells(String name, int damages){
+
+    public Weapons(String name, int damages){
         this.name = name;
         this.damages = damages;
     }

@@ -1,5 +1,9 @@
+import MySQL.BDD_connexion;
 import characters.Warriors;
 import characters.Wizards;
+import items_skills.Spells;
+import items_skills.Weapons;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,11 +15,11 @@ public class Menu {
     public void menu() {
         Scanner keyboard = new Scanner(System.in);
         String key;
-        System.out.println("Enter \"1\" Pour créer un personnage, \"2\" pour commencer une partie \"0\" pour quitter le jeu");
+        System.out.println("Enter \"1\" Pour choisir ou créer un personnage, \"2\" pour commencer une partie \"0\" pour quitter le jeu");
         key = keyboard.nextLine();
         switch (key) {
             case "1":
-                System.out.println("Vous entrez dans le menu création de personnage");
+                System.out.println("Vous entrez dans le menu choix du personnage");
                 character_creation();
                 break;
             case "2":
@@ -33,8 +37,20 @@ public class Menu {
     //Liste des personnages
     List<Warriors> warriorsList = new ArrayList<>();
     List<Wizards> wizardsList = new ArrayList<>();
-
-    public void character_creation() {
+    public void character_creation (){
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("1 : Choisir un personnage déjà crée \n" +
+                            "2 : Créer un nouveau personnage");
+        switch (keyboard.nextInt()) {
+            case 1 :
+                BDD_connexion.connexion_to_database();
+                break;
+            case 2 :
+                new_character_creation();
+                break;
+        }
+    }
+    public void new_character_creation() {
         Scanner keyboard = new Scanner(System.in);
         String key;
 
@@ -67,6 +83,7 @@ public class Menu {
         Menu menu = new Menu();
         menu.menu();
     }
+
 
     public Warriors warrior_creation() {
         Scanner keyboard = new Scanner(System.in);
