@@ -46,7 +46,7 @@ public class Menu {
                             "2 : Créer un nouveau personnage");
         switch (keyboard.nextInt()) {
             case 1 :
-                Connection connection = BDD_connexion.connexion_to_database();
+                Connection connection = BDD_connexion.getConnection();
                 List<Character> characters = BDD_connexion.select_heroes(connection);
                 for (Character character : characters){
                     System.out.println(character.toString());
