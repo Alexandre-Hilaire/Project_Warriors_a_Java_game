@@ -2,19 +2,29 @@ package MySQL;
 
 import characters.Warriors;
 import characters.Wizards;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class BDD_connexion {
     public static Connection connexion_to_database() {
-        String url = "jdbc:mysql://localhost:3306/Heroes";
-        String username = "player";
-        String password = "player_password";
+
+        Properties prop = new Properties();
+        try {
+            prop.load(new FileInputStream("src/.env"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String url = prop.getProperty("url");
+        String username = prop.getProperty("login");
+        String password = prop.getProperty("pass");
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(url, username, password);
