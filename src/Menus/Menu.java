@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import characters.Warriors;
 import characters.Wizards;
+import characters.Characters;
 import game.Game;
 import items_skills.Spells;
 import items_skills.Weapons;
@@ -47,9 +48,9 @@ public class Menu {
         switch (keyboard.nextInt()) {
             case 1 :
                 Connection connection = BDD_connexion.getConnection();
-                List<Character> characters = BDD_connexion.select_heroes(connection);
-                for (Character character : characters){
-                    System.out.println(character.toString());
+                List<Characters> charactersList = BDD_connexion.select_heroes(connection);
+                for (Characters character : charactersList){
+                    System.out.println(character);
                 }
                 Menu menu = new Menu();
                 menu.menu();
@@ -153,7 +154,7 @@ public class Menu {
         System.out.println("Entrez le nom de la potion du Mage");
         potion = keyboard.nextLine();
 
-        Wizards new_wizard = new Wizards(name, health, force, potion);
+        Wizards new_wizard = new Wizards(name, health, force, spell_name, potion);
         submenu_character_creation(name, health, force, class_name);
         System.out.println(new_wizard);
         return new_wizard;

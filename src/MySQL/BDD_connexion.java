@@ -2,7 +2,7 @@ package MySQL;
 
 import characters.Warriors;
 import characters.Wizards;
-
+import characters.Characters;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,7 +24,6 @@ public class BDD_connexion {
         }
         return connection;
     }
-
     //Connexion à la BDD avec le properties et le fichier .env
     private static void connect_to_BDD (){
         Properties prop = new Properties();
@@ -43,7 +42,6 @@ public class BDD_connexion {
             System.out.println("Echec de la connexion : " + e.getMessage());
         }
     }
-
     //Pour fermer la connexion
     public static void close_connection(){
         if (connection != null) {
@@ -56,10 +54,9 @@ public class BDD_connexion {
             }
         }
     }
-
     //Afficher tous les personnages dans la bdd
-    public static List<Character> select_heroes(Connection connection){
-        List<Character> characters = new ArrayList<>();
+    public static List<Characters> select_heroes(Connection connection){
+        List<Characters> characters = new ArrayList<>();
         String query = "SELECT * FROM Player_heroes";
         try {
             Statement statement = connection.createStatement();
@@ -74,6 +71,13 @@ public class BDD_connexion {
                 String weapons_spells = resultSet.getString("weapons_spells");
                 String shields_potions = resultSet.getString("shields_potions");
                 System.out.println(id + " , class : " + heroes_class + ", Name : " + name + ", Health " + health + ", Force : " + force_value + ", " + weapons_spells + ", " + shields_potions);
+
+                if (heroes_class.equals("Warrior")) {
+                    characters.add(new Warriors(name, health, force_value, shields_potions));
+                }
+                else if (heroes_class.equals("Wizard")) {
+                    characters.add(new Wizards(name, health, force_value, weapons_spells, shields_potions));
+                }
 
             }
         }
