@@ -6,5 +6,3 @@ public class Main {
         menu.menu();
     }
 }
-
-//TODO mettre la partie choix de persos déjà existants dans le menu plutôt que dans le bdd

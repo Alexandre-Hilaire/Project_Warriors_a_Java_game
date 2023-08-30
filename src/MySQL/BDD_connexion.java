@@ -2,7 +2,6 @@ package MySQL;
 
 import characters.Warriors;
 import characters.Wizards;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class BDD_connexion {
     public static Connection connexion_to_database() {
-        String url = "jdbc:mysql://localhost:3306/heroes";
+        String url = "jdbc:mysql://localhost:3306/Heroes";
         String username = "player";
         String password = "player_password";
         Connection connection = null;
@@ -38,7 +37,7 @@ public class BDD_connexion {
     }
     public static List<Character> select_heroes(Connection connection){
         List<Character> characters = new ArrayList<>();
-        String query = "SELECT * FROM heroe";
+        String query = "SELECT * FROM Player_heroes";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -50,8 +49,8 @@ public class BDD_connexion {
                 int health = resultSet.getInt("health");
                 int force_value = resultSet.getInt("force_value");
                 String weapons_spells = resultSet.getString("weapons_spells");
-                String shield = resultSet.getString("shield");
-                System.out.println(id + " , class : " + heroes_class + ", Name : " + name + ", Health " + health + ", Force : " + force_value + ", " + weapons_spells + ", " + shield);
+                String shields_potions = resultSet.getString("shields_potions");
+                System.out.println(id + " , class : " + heroes_class + ", Name : " + name + ", Health " + health + ", Force : " + force_value + ", " + weapons_spells + ", " + shields_potions);
             }
         }
         catch (SQLException e) {
