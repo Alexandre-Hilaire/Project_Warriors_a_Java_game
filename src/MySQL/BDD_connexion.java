@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class BDD_connexion {
+    //Singleton pour permettre une seule instanciation de la connexion
     private static Connection connection = null;
     private BDD_connexion(){
     }
@@ -23,6 +24,8 @@ public class BDD_connexion {
         }
         return connection;
     }
+
+    //Connexion à la BDD avec le properties et le fichier .env
     private static void connect_to_BDD (){
         Properties prop = new Properties();
         try {
@@ -40,37 +43,21 @@ public class BDD_connexion {
             System.out.println("Echec de la connexion : " + e.getMessage());
         }
     }
-//    public static Connection connexion_to_database() {
-//
-//        Properties prop = new Properties();
-//        try {
-//            prop.load(new FileInputStream("src/.env"));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        String url = prop.getProperty("url");
-//        String username = prop.getProperty("login");
-//        String password = prop.getProperty("pass");
-//        Connection connection = null;
-//        try {
-//            connection = DriverManager.getConnection(url, username, password);
-//            System.out.println("Connexion réussie !");
-//        } catch (SQLException e) {
-//            System.out.println("Echec de la connexion : " + e.getMessage());
-//        }
-//        return connection;
-        // bloc pour fermer la connexion
-//        finally {
-//            try {
-//                if (connection != null) {
-//                    connection.close();
-//                    System.out.println("Connexion fermée");
-//                }
-//            } catch (SQLException e) {
-//                System.out.println("Echec lors de la fermeture de la connexion : " + e.getMessage());
-//            }
-//        }
 
+    //Pour fermer la connexion
+    public static void close_connection(){
+        if (connection != null) {
+            try{
+                connection.close();
+                System.out.println("fermeture de la connexion");
+            }
+            catch (SQLException e) {
+                System.out.println("Echec de la fermeture de la connexion");
+            }
+        }
+    }
+
+    //Afficher tous les personnages dans la bdd
     public static List<Character> select_heroes(Connection connection){
         List<Character> characters = new ArrayList<>();
         String query = "SELECT * FROM Player_heroes";
